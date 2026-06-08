@@ -1,0 +1,810 @@
+/* Sonokembang Cities — landing page styles */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--sk-cream);
+  color: var(--fg);
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   PAGE HEADER (nav)
+   ========================================================= */
+.nav {
+  position: fixed; inset: 0 0 auto 0;
+  z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 32px;
+  background: linear-gradient(180deg, rgba(19,52,37,.55), rgba(19,52,37,0));
+  color: var(--fg-on-dark);
+  pointer-events: none;
+}
+.nav > * { pointer-events: auto; }
+.nav-mark {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.nav-mark img { height: 36px; width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,.4)); }
+.nav-links {
+  display: flex; gap: 28px;
+  font-size: 13px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.nav-links a { color: var(--fg-on-dark); opacity: .85; }
+.nav-links a:hover { opacity: 1; color: var(--sk-gold-soft); }
+.nav-cta {
+  background: var(--sk-gold);
+  color: var(--sk-emerald);
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease-out);
+}
+.nav-cta:hover { background: var(--sk-gold-soft); transform: translateY(-1px); }
+
+/* =========================================================
+   HERO BAND  (compact — leaves room for the city accordion)
+   ========================================================= */
+.hero {
+  position: relative;
+  height: 56vh;
+  min-height: 420px;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  color: var(--fg-on-dark);
+  padding: 0 24px;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(19,52,37,.55) 0%, rgba(19,52,37,.35) 40%, rgba(19,52,37,.85) 100%),
+    url("/assets/hero-wedding-spread.jpg") center/cover no-repeat;
+  z-index: -1;
+  transform: scale(1.02);
+}
+.hero-eyebrow {
+  font-family: var(--font-script);
+  color: var(--sk-gold-soft);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.4);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(48px, 7.2vw, 104px);
+  line-height: .95;
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  /* color: inherit so the global h1 dark-ink reset doesn't
+     paint this invisible on the dark hero background. */
+  color: var(--sk-cream);
+  text-shadow: 0 2px 24px rgba(0,0,0,.35);
+}
+.hero-title em {
+  font-style: italic;
+  font-family: var(--font-editorial);
+  font-weight: 500;
+  color: var(--sk-gold-soft);
+}
+.hero-sub {
+  margin-top: 18px;
+  max-width: 620px;
+  color: rgba(245,239,227,.85);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.hero-rule {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 28px;
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--sk-gold-soft);
+  font-weight: 600;
+}
+.hero-rule::before,
+.hero-rule::after {
+  content: "";
+  width: 60px; height: 1px;
+  background: var(--sk-gold);
+}
+/* Tumpeng zig-zag accent at hero bottom */
+.hero-zigzag {
+  position: absolute; left: 0; right: 0; bottom: -1px;
+  height: 14px;
+  background: var(--sk-cream);
+  -webkit-mask: linear-gradient(135deg, transparent 50%, #000 50%) 0 0/14px 14px,
+                 linear-gradient(225deg, transparent 50%, #000 50%) 0 0/14px 14px;
+          mask: linear-gradient(135deg, transparent 50%, #000 50%) 0 0/14px 14px,
+                 linear-gradient(225deg, transparent 50%, #000 50%) 0 0/14px 14px;
+  -webkit-mask-composite: source-over;
+}
+
+/* =========================================================
+   SECTION HEADING ABOVE THE PANELS
+   ========================================================= */
+.section-head {
+  padding: 56px 48px 24px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--sk-emerald);
+  margin: 0;
+  line-height: 1.05;
+}
+.section-head h2 em {
+  font-family: var(--font-script);
+  font-style: normal;
+  color: var(--sk-gold-deep);
+  font-weight: 400;
+  font-size: 1.1em;
+  margin-right: 8px;
+}
+.section-head .head-meta {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  color: var(--fg-mute);
+  font-size: 13px;
+  letter-spacing: var(--tracking-wide);
+  text-align: right;
+  max-width: 360px;
+}
+.section-head .eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--sk-gold-deep);
+}
+.scroll-hint {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px;
+  color: var(--fg-mute);
+  letter-spacing: var(--tracking-wide);
+}
+.scroll-hint .keycap {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  border: 1px solid var(--sk-line);
+  border-radius: 4px;
+  background: var(--sk-ivory);
+  font-size: 11px;
+  color: var(--sk-ink-soft);
+  font-family: var(--font-mono);
+}
+
+/* =========================================================
+   CITY ACCORDION
+   ========================================================= */
+.cities-wrap {
+  padding: 0 48px 32px;
+  position: relative;
+}
+.cities {
+  display: flex;
+  gap: 10px;
+  height: 78vh;
+  min-height: 560px;
+  max-height: 760px;
+  align-items: stretch;
+  /* allow horizontal scroll on smaller screens */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 48px;
+  padding-bottom: 12px;
+}
+.cities::-webkit-scrollbar { height: 6px; }
+.cities::-webkit-scrollbar-track { background: transparent; }
+.cities::-webkit-scrollbar-thumb { background: var(--sk-cream-deep); border-radius: 999px; }
+
+/* Each panel */
+.city {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 140px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  scroll-snap-align: start;
+  transition: flex-grow var(--dur-slow) var(--ease-out),
+              flex-basis var(--dur-slow) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out),
+              transform var(--dur) var(--ease-out);
+  box-shadow: var(--shadow-md), inset 0 0 0 1px rgba(255,255,255,.04);
+  background: var(--sk-emerald);
+}
+.city::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: var(--city-bg);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: transform 1.2s var(--ease-out), filter var(--dur-slow) var(--ease-out);
+  filter: saturate(1.05) brightness(.85);
+}
+.city::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(19,52,37,.15) 0%,
+    rgba(19,52,37,.45) 45%,
+    rgba(19,52,37,.92) 100%
+  );
+  z-index: 1;
+  transition: background var(--dur-slow) var(--ease-out);
+}
+.city:hover::before { transform: scale(1.06); filter: saturate(1.1) brightness(.95); }
+
+/* Expansion states */
+.cities[data-mode="hover"] .city:hover { flex-grow: 4; }
+.cities[data-mode="hover"] .city:hover ~ .city,
+.cities[data-mode="hover"]:has(.city:hover) .city:not(:hover) { flex-grow: .7; }
+
+.cities .city.is-pinned { flex-grow: 5 !important; }
+.cities:has(.city.is-pinned) .city:not(.is-pinned) { flex-grow: .55 !important; }
+.cities:has(.city.is-pinned) .city:not(.is-pinned):hover { flex-grow: .9 !important; }
+
+/* Pinned panel gets a lifted treatment */
+.city.is-pinned {
+  box-shadow: var(--shadow-lg), 0 0 0 1px var(--sk-gold);
+}
+.city.is-pinned::after {
+  background: linear-gradient(
+    180deg,
+    rgba(19,52,37,.25) 0%,
+    rgba(19,52,37,.55) 50%,
+    rgba(19,52,37,.96) 100%
+  );
+}
+
+/* Inner content container.
+   container-type lets the children adapt to the panel's own
+   width (which shrinks/grows wildly with the accordion), not
+   the viewport. */
+.city { container-type: inline-size; }
+.city-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex; flex-direction: column;
+  padding: 28px;
+  color: var(--fg-on-dark);
+  gap: 14px;
+}
+
+/* Two-column body — text profile on the left, IG grid on
+   the right. Collapses to a single column when the panel is
+   narrow so it never overlaps. Tracks scale with container
+   width via cqw units so wide panels grow proportionally
+   instead of leaving dead space. */
+.city-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(0, 1fr);
+  gap: 28px;
+  align-content: center;
+  justify-content: center;
+  overflow: hidden;
+}
+@container (min-width: 780px) {
+  .city-body {
+    grid-template-columns: minmax(260px, 520px) clamp(360px, 38cqw, 600px);
+    gap: clamp(28px, 4cqw, 64px);
+    align-items: center;
+    justify-items: start;
+  }
+}
+.city-left  {
+  display: flex; flex-direction: column;
+  gap: clamp(10px, 1.4cqw, 18px);
+  min-width: 0;
+  max-width: 520px;
+}
+.city-right {
+  display: flex; flex-direction: column;
+  gap: 12px; min-width: 0; width: 100%;
+}
+
+/* Collapsed-state label (vertical city name)
+   Uses writing-mode so the rotated text lives in its own layout
+   box (centered, bounded by the panel) instead of overflowing
+   out the side. */
+.city-vlabel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0 32px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 1.8vw, 32px);
+  letter-spacing: var(--tracking-tight);
+  color: var(--sk-cream);
+  text-shadow: 0 2px 16px rgba(0,0,0,.55);
+  opacity: 1;
+  transition: opacity var(--dur) var(--ease-out);
+  gap: 18px;
+}
+.city-vlabel .num {
+  writing-mode: horizontal-tb;
+  transform: rotate(180deg);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--sk-gold-soft);
+  font-weight: 600;
+  flex: 0 0 auto;
+}
+.city.is-open .city-vlabel { opacity: 0; }
+
+/* Top row of city panel — eyebrow + index */
+.city-top {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--sk-gold-soft);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out) 80ms;
+}
+.city.is-open .city-top { opacity: 1; }
+.city-top .num { font-family: var(--font-mono); color: rgba(245,239,227,.55); }
+
+/* Big city name — explicit color so the design-system
+   base `h3 { color: var(--fg) }` doesn't paint it dark-ink on
+   the dark emerald panel. Scales with container width all
+   the way up to ~96px on a generously-sized panel. */
+.city-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 6cqw, 56px);
+  line-height: .98;
+  letter-spacing: var(--tracking-tight);
+  color: var(--sk-cream);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-slow) var(--ease-out) 120ms,
+              transform var(--dur-slow) var(--ease-out) 120ms;
+}
+@container (min-width: 780px) {
+  .city-name { font-size: clamp(44px, 6.8cqw, 96px); }
+}
+.city-name em {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 400;
+  color: var(--sk-gold-soft);
+  font-size: .42em;
+  display: block;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+.city.is-open .city-name { opacity: 1; transform: translateY(0); }
+
+.city-tag {
+  margin-top: 4px;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(16px, 1.7cqw, 24px);
+  line-height: 1.2;
+  color: var(--sk-gold-soft);
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out) 160ms;
+}
+.city.is-open .city-tag { opacity: 1; }
+
+.city-note {
+  margin-top: 6px;
+  font-size: clamp(13px, 1.15cqw, 17px);
+  line-height: 1.6;
+  color: rgba(245,239,227,.82);
+  max-width: 480px;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out) 200ms;
+}
+.city.is-open .city-note { opacity: 1; }
+
+/* Instagram-style profile card on the right column.
+   Fills its grid column entirely — the column itself is
+   sized via cqw clamp so the card scales smoothly with
+   panel width. */
+.ig-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(228,210,168,.18);
+  border-radius: var(--radius-lg);
+  padding: clamp(12px, 1.4cqw, 22px);
+  display: flex; flex-direction: column;
+  gap: clamp(10px, 1.2cqw, 18px);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--dur-slow) var(--ease-out) 200ms,
+              transform var(--dur-slow) var(--ease-out) 200ms;
+  backdrop-filter: blur(6px);
+}
+.city.is-open .ig-card { opacity: 1; transform: translateY(0); }
+
+.ig-head {
+  display: flex; align-items: center; gap: 12px;
+}
+.ig-avatar {
+  width: clamp(40px, 4cqw, 56px);
+  height: clamp(40px, 4cqw, 56px);
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background-color: var(--sk-emerald-700);
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--sk-gold-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: transparent;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  position: relative;
+}
+.ig-meta { flex: 1; min-width: 0; }
+.ig-handle {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(14px, 1.3cqw, 18px);
+  color: var(--sk-cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ig-stats {
+  display: flex; align-items: center; gap: 8px;
+  margin-top: 2px;
+  font-size: clamp(11px, 1cqw, 14px);
+  color: rgba(245,239,227,.72);
+}
+.ig-stats b { color: var(--sk-cream); font-weight: 600; }
+.ig-stats .dot { width: 3px; height: 3px; border-radius: 999px; background: rgba(245,239,227,.4); }
+
+.ig-follow {
+  background: var(--sk-gold);
+  color: var(--sk-emerald);
+  border: none;
+  padding: 8px clamp(12px, 1.4cqw, 18px);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(11px, 1.05cqw, 14px);
+  letter-spacing: .03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--dur) var(--ease-out);
+  flex: 0 0 auto;
+}
+.ig-follow:hover { background: var(--sk-gold-soft); transform: translateY(-1px); }
+
+/* Instagram embed container */
+.city-feed-embed {
+  width: 100%;
+  min-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.city-feed-embed blockquote.instagram-media {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.city-feed-embed iframe {
+  border-radius: 8px !important;
+  max-width: 100% !important;
+  background: rgba(255,255,255,.06) !important;
+}
+
+/* The actual 3×2 photo mosaic */
+.city-feed {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 100%;
+}
+.city-feed-item {
+  aspect-ratio: 1;
+  background: var(--sk-cream-deep) center/cover no-repeat;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out);
+}
+.city-feed-item:hover { transform: scale(1.02); z-index: 2; }
+.city-feed-item::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 70%, rgba(0,0,0,.2));
+}
+
+/* Bottom strip — address + socials. Centered so the map/IG/
+   WA/TikTok pills sit visually balanced under the body. */
+.city-foot {
+  flex: 0 0 auto;
+  margin-top: 18px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transition: opacity var(--dur-slow) var(--ease-out) 300ms;
+}
+.city.is-open .city-foot { opacity: 1; }
+.city-addr {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: clamp(13px, 1.1cqw, 16px);
+  color: rgba(245,239,227,.78);
+}
+.city-addr svg { color: var(--sk-gold); }
+
+.city-socials {
+  display: flex; gap: 8px;
+}
+.city-socials a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: clamp(34px, 3.2cqw, 44px);
+  height: clamp(34px, 3.2cqw, 44px);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(228,210,168,.25);
+  color: var(--sk-cream);
+  transition: all var(--dur) var(--ease-out);
+}
+.city-socials a:hover {
+  background: var(--sk-gold);
+  color: var(--sk-emerald);
+  border-color: var(--sk-gold);
+  transform: translateY(-2px);
+}
+
+/* Pin / expand button — bottom-right corner of any panel */
+.city-pin {
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 4;
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(228,210,168,.35);
+  background: rgba(19,52,37,.55);
+  color: var(--sk-cream);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all var(--dur) var(--ease-out);
+}
+.city-pin:hover { background: var(--sk-gold); color: var(--sk-emerald); border-color: var(--sk-gold); }
+.city.is-pinned .city-pin {
+  background: var(--sk-gold);
+  color: var(--sk-emerald);
+  border-color: var(--sk-gold);
+}
+.city-pin svg { transition: transform var(--dur) var(--ease-out); }
+.city.is-pinned .city-pin svg { transform: rotate(45deg); }
+
+/* Number badge top-left for collapsed panels */
+.city-num {
+  position: absolute;
+  top: 16px; left: 18px;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  color: var(--sk-gold-soft);
+  opacity: .9;
+  pointer-events: none;
+}
+.city.is-open .city-num { opacity: 0; }
+
+/* =========================================================
+   Footer ribbon — quick summary + CTA
+   ========================================================= */
+.ribbon {
+  margin: 0 48px;
+  padding: 22px 28px;
+  border-top: 1px solid var(--sk-line);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.ribbon-l {
+  display: flex; align-items: center; gap: 18px;
+  color: var(--fg-mute);
+  font-size: 13px;
+  letter-spacing: var(--tracking-wide);
+}
+.ribbon-l .dot { width: 4px; height: 4px; background: var(--sk-gold); border-radius: 999px; }
+.ribbon-r {
+  display: flex; align-items: center; gap: 14px;
+}
+.ribbon a.text-link {
+  font-size: 13px;
+  color: var(--sk-emerald);
+  font-weight: 600;
+  letter-spacing: .03em;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.ribbon a.text-link:hover { color: var(--sk-gold-deep); }
+.ribbon-cta {
+  background: var(--sk-emerald);
+  color: var(--sk-cream);
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .04em;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all var(--dur) var(--ease-out);
+}
+.ribbon-cta:hover { background: var(--sk-emerald-700); transform: translateY(-1px); }
+
+/* Carousel nav arrows */
+.cities-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 44px; height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--sk-line);
+  background: var(--sk-ivory);
+  color: var(--sk-emerald);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--dur) var(--ease-out);
+}
+.cities-nav:hover { background: var(--sk-gold); color: var(--sk-emerald); border-color: var(--sk-gold); }
+.cities-nav.left { left: 12px; }
+.cities-nav.right { right: 12px; }
+
+/* Tiny hint pill below panels */
+.hint-pill {
+  position: absolute;
+  bottom: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--sk-emerald);
+  color: var(--sk-cream);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  font-weight: 600;
+  box-shadow: var(--shadow-md);
+}
+.hint-pill .gold { color: var(--sk-gold-soft); }
+
+/* =========================================================
+   RESPONSIVE — vertical stack below 1100px so the pinned
+   panel keeps its real size and never gets squeezed.
+   Collapsed panels become slim horizontal strips below it.
+   ========================================================= */
+@media (max-width: 1100px) {
+  .cities-wrap { padding: 0 24px 32px; }
+
+  .cities {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    gap: 10px;
+    padding-bottom: 0;
+    scroll-snap-type: none;
+  }
+
+  /* Every panel: full width, collapsed = short strip, pinned = grows. */
+  .city {
+    flex: 0 0 auto !important;
+    width: 100%;
+    min-width: 0;
+    height: 120px;
+    transition: height var(--dur-slow) var(--ease-out),
+                box-shadow var(--dur) var(--ease-out);
+  }
+  .city.is-pinned { height: auto; }
+
+  /* Disable horizontal flex-grow tricks at this width. */
+  .cities[data-mode="hover"] .city:hover,
+  .cities[data-mode="hover"] .city:hover ~ .city,
+  .cities[data-mode="hover"]:has(.city:hover) .city:not(:hover),
+  .cities:has(.city.is-pinned) .city:not(.is-pinned) {
+    flex-grow: 0 !important;
+  }
+
+  /* Collapsed strip — show city name horizontally, big, on the left. */
+  .city-vlabel {
+    writing-mode: horizontal-tb;
+    transform: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 28px;
+    gap: 18px;
+    font-size: clamp(24px, 4.5vw, 34px);
+    inset: 0;
+  }
+  .city-vlabel .num {
+    transform: none;
+    writing-mode: horizontal-tb;
+  }
+  /* On collapsed strips, push the badge text to the right side. */
+  .city-vlabel::after {
+    content: "Tap untuk membuka";
+    margin-left: auto;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--sk-gold-soft);
+    font-weight: 600;
+    opacity: .8;
+  }
+
+  /* When pinned, give the inner content room to actually breathe. */
+  .city.is-pinned .city-inner { min-height: 560px; }
+
+  /* Feed mosaic — 3 columns reads better on narrow widths. */
+  .city.is-pinned .city-feed { grid-template-columns: repeat(3, 1fr); }
+
+  /* Hide the horizontal arrow buttons & "geser →" hint. */
+  .cities-nav { display: none; }
+  .section-head .head-meta .scroll-hint .keycap { display: none; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .section-head {
+    padding: 40px 24px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .section-head .head-meta { align-items: flex-start; text-align: left; }
+  .cities-wrap { padding: 0 12px 24px; }
+  .ribbon { margin: 0 12px; flex-direction: column; align-items: stretch; }
+  .ribbon-r { justify-content: space-between; }
+  .city-inner { padding: 22px; }
+  .city.is-pinned .city-feed { grid-template-columns: repeat(3, 1fr); }
+  .hero { height: auto; min-height: 0; padding: 120px 24px 60px; }
+}

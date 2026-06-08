@@ -1,5 +1,6 @@
 node_modules
 dist
+.next
 .DS_Store
 *.local
 
@@ -15,3 +16,7 @@ dist
 /Cerita Kami.html
 /Sonokembang Landing.html
 /Sonokembang landing page (1)/
+
+# Old Vite files
+/vite.config.js
+/src/

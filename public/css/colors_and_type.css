@@ -1,0 +1,237 @@
+/* ============================================================
+   SONOKEMBANG DESIGN SYSTEM
+   Colors & Type foundations
+   ============================================================ */
+
+/* ---- Google Fonts ----------------------------------------- */
+/* Plus Jakarta Sans — Indonesian sans, used for UI / body
+   Playfair Display — serif display, stands in for the bold
+                       SONOKEMBANG wordmark serif
+   Cormorant Garamond — refined serif for editorial headers
+   Pinyon Script — cursive, stands in for the "catering"
+                   handwriting under the logo
+   ----------------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&display=swap");
+
+:root {
+  /* ============================================================
+     COLOR TOKENS
+     ============================================================
+     Sonokembang lives in two registers:
+       1. "Catering" — the historic mark: tomato red + tumpeng green.
+          Festive, warm, Indonesian street-food familiar.
+       2. "Prestige" — the premium wedding/banquet brand: deep
+          emerald (theme color #133425 from sonokembangprestige.com),
+          cream, antique gold, batik browns. Elegant, heritage.
+     Most surfaces use Prestige. Use Catering Red as the brand-mark
+     accent (logo bar, key CTAs, sale stickers).
+  ============================================================ */
+
+  /* --- Heritage mark ---------------------------------------- */
+  --sk-red:            #C8262D;   /* SONOKEMBANG oval — primary mark */
+  --sk-red-deep:       #9E1B22;   /* hover / press, headings on cream */
+  --sk-red-soft:       #E8B4B7;   /* light tint, badges */
+  --sk-green:          #1D9C4A;   /* tumpeng triangles */
+  --sk-green-deep:     #14773A;
+
+  /* --- Prestige (default UI palette) ------------------------ */
+  --sk-emerald:        #133425;   /* deep emerald — page chrome, footers */
+  --sk-emerald-700:    #1B4A35;
+  --sk-emerald-500:    #2E6A4E;
+  --sk-emerald-300:    #6B9B85;
+  --sk-emerald-100:    #D9E5DE;
+
+  --sk-cream:          #F5EFE3;   /* default canvas */
+  --sk-cream-deep:     #ECE3D0;   /* card on cream, dividers */
+  --sk-ivory:          #FBF8F1;   /* lightest cream — for cards on cream */
+  --sk-paper:          #FFFFFF;
+
+  --sk-gold:           #B79255;   /* antique gold — accents, ornaments */
+  --sk-gold-deep:      #8A6A3A;   /* darker bronze for type */
+  --sk-gold-soft:      #E4D2A8;   /* highlights, gilded edges */
+
+  --sk-batik-brown:    #6B3F1D;   /* batik runner brown — secondary accent */
+  --sk-batik-tan:      #B98A5A;
+  --sk-batik-soft:     #E8D8C0;
+
+  /* --- Neutrals --------------------------------------------- */
+  --sk-ink:            #1A1410;   /* darkest body type */
+  --sk-ink-soft:       #3A322B;   /* secondary body type */
+  --sk-mute:           #6F665C;   /* tertiary type, captions */
+  --sk-line:           #DCD3C2;   /* hairline rules on cream */
+  --sk-line-soft:      #EAE2D2;
+
+  /* --- Semantic --------------------------------------------- */
+  --sk-success:        #2E6A4E;
+  --sk-warning:        #C28A2E;
+  --sk-danger:         #B23030;   /* a touch deeper than mark red */
+  --sk-info:           #356B82;
+
+  /* ============================================================
+     FOREGROUND / BACKGROUND SEMANTIC TOKENS
+     ============================================================ */
+  --bg:                var(--sk-cream);
+  --bg-elev:           var(--sk-ivory);
+  --bg-dark:           var(--sk-emerald);
+  --bg-darker:         #0C2218;
+
+  --fg:                var(--sk-ink);
+  --fg-soft:           var(--sk-ink-soft);
+  --fg-mute:           var(--sk-mute);
+  --fg-on-dark:        var(--sk-cream);
+  --fg-on-dark-mute:   #B8C5BC;
+
+  --accent:            var(--sk-gold);
+  --accent-deep:       var(--sk-gold-deep);
+  --brand:             var(--sk-red);
+  --line:              var(--sk-line);
+
+  /* ============================================================
+     TYPOGRAPHY
+     ============================================================
+     Hierarchy:
+       display-script  — Pinyon Script  — "catering", "Hand crafted"
+       display-serif   — Playfair Display 700/800 — hero titles
+       editorial-serif — Cormorant Garamond — long-form, menus
+       ui-sans         — Plus Jakarta Sans — buttons, forms, body
+  ============================================================ */
+  --font-display: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --font-editorial: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-script: "Pinyon Script", "Allura", "Great Vibes", cursive;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Type scale — desktop */
+  --fs-display-xl: clamp(56px, 7vw, 96px);   /* hero "Discover the delights" */
+  --fs-display:    clamp(40px, 5vw, 64px);   /* page H1 */
+  --fs-h1:         clamp(32px, 3.6vw, 44px); /* section title */
+  --fs-h2:         28px;
+  --fs-h3:         22px;
+  --fs-h4:         18px;
+  --fs-eyebrow:    13px;                     /* "MEET OUR FOUNDER" eyebrows */
+  --fs-body-lg:    18px;
+  --fs-body:       16px;
+  --fs-body-sm:    14px;
+  --fs-caption:    12px;
+
+  /* Line height */
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.7;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.18em;     /* eyebrow caps */
+
+  /* ============================================================
+     SPACING, RADII, SHADOWS
+     ============================================================ */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* Sonokembang is a softly-rounded system — generous but not pill-y.
+     Cards & images: 6-12px. Buttons: 999 (pill) OR 6px (square). */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(26,20,16,.06), 0 1px 1px rgba(26,20,16,.04);
+  --shadow-md: 0 6px 18px -8px rgba(26,20,16,.18), 0 2px 4px rgba(26,20,16,.06);
+  --shadow-lg: 0 20px 40px -16px rgba(26,20,16,.25), 0 6px 12px rgba(26,20,16,.08);
+  --shadow-gold: 0 14px 30px -16px rgba(183,146,85,.55);
+  --shadow-emerald: 0 14px 30px -14px rgba(19,52,37,.45);
+
+  /* Hairline inset for cream cards */
+  --shadow-inset-line: inset 0 0 0 1px var(--sk-line);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+  --ease-in-out: cubic-bezier(.65,.05,.36,1);
+  --dur-fast: 140ms;
+  --dur: 240ms;
+  --dur-slow: 480ms;
+}
+
+/* ============================================================
+   ELEMENT DEFAULTS — use these as a baseline reset for any
+   page that imports colors_and_type.css.
+   ============================================================ */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--fg); margin: 0; }
+h1 { font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); font-weight: 700; }
+h2 { font-size: var(--fs-h1); line-height: var(--lh-snug); font-weight: 600; }
+h3 { font-size: var(--fs-h2); line-height: var(--lh-snug); font-weight: 600; }
+h4 { font-size: var(--fs-h3); line-height: var(--lh-snug); font-weight: 600; }
+
+p { margin: 0 0 1em; line-height: var(--lh-relaxed); color: var(--fg-soft); }
+small { font-size: var(--fs-caption); color: var(--fg-mute); }
+
+a { color: var(--sk-emerald-500); text-decoration: none; transition: color var(--dur) var(--ease-out); }
+a:hover { color: var(--sk-emerald-700); }
+
+/* ============================================================
+   UTILITY CLASSES (optional)
+   ============================================================ */
+.sk-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--sk-gold-deep);
+  font-weight: 600;
+}
+.sk-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--sk-red);
+}
+.sk-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+}
+.sk-editorial {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+}
+
+/* Hover & focus protocol — used by all interactive surfaces */
+.sk-hoverable { transition: transform var(--dur) var(--ease-out),
+                            box-shadow var(--dur) var(--ease-out),
+                            background var(--dur) var(--ease-out),
+                            color var(--dur) var(--ease-out); }
+.sk-hoverable:hover { transform: translateY(-1px); }
+.sk-hoverable:active { transform: translateY(0) scale(.99); }
+
+/* Focus ring — gold halo */
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--sk-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
